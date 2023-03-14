@@ -9,8 +9,8 @@ dev = [
 
 [project]
 name = "presento"
-version = "0.1.0"
-description = "A tool to programmatically build slides"
+version = "0.1.1"
+description = "A tool to programmatically build slides using Reveal.js"
 authors = [
     {name = "Jacopo Farina", email = "jacopo1.farina@gmail.com"},
 ]
@@ -25,3 +25,7 @@ license = {text = "MIT"}
 [build-system]
 requires = ["pdm-pep517>=1.0"]
 build-backend = "pdm.pep517.api"
+
+[project.urls]
+"Homepage" = "https://github.com/jacopofar/presento"
+"Bug Tracker" = "https://github.com/jacopofar/presento/issues"

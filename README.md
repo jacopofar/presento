@@ -6,6 +6,12 @@ Using the excellent reveal.js library, this script helps you generate slides fro
 
 You can easily create markdown slides or insert charts as HTML with Plotly.
 
+## Install
+
+    pip install presento
+
+or use PDM, Poetry, etc...
+
 # Example
 
 ```python
