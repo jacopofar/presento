@@ -7,7 +7,7 @@ from subprocess import Popen
 from textwrap import dedent
 from time import sleep
 from webbrowser import open as browser_open
-
+from typing import Optional
 from markdown import markdown
 
 import presento
@@ -35,7 +35,7 @@ class Presentation:
     def add_cdn_js(self, url: str) -> None:
         self.cdn_js.append(url)
 
-    def save_folder(self, folder: Path | str) -> None:
+    def save_folder(self, folder: Optional[Path]) -> None:
         if isinstance(folder, str):
             folder = Path(folder)
         with tempfile.TemporaryDirectory() as tmpdirname:
