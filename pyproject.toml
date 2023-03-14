@@ -18,7 +18,7 @@ dependencies = [
     "Ipython>=8.11.0",
     "markdown>=3.4.1",
 ]
-requires-python = ">=3.11"
+requires-python = ">=3.10"
 readme = "README.md"
 license = {text = "MIT"}
 
