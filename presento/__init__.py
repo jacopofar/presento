@@ -16,9 +16,13 @@ REVEAL_ZIP_FILE = "reveal.js-master.zip"
 
 
 class Presentation:
-    def __init__(self) -> None:
+    def __init__(
+        self,
+        theme: str = "black",
+    ) -> None:
         self.slides: list[str] = []
         self.cdn_js: list[str] = []
+        self.theme = theme
 
     def add_md_slide(self, content: str) -> None:
         self.slides.append(markdown(dedent(content)))
