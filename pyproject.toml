@@ -9,7 +9,7 @@ dev = [
 
 [project]
 name = "presento"
-version = "0.1.1"
+version = "0.1.2"
 description = "A tool to programmatically build slides using Reveal.js"
 authors = [
     {name = "Jacopo Farina", email = "jacopo1.farina@gmail.com"},
@@ -18,7 +18,7 @@ dependencies = [
     "Ipython>=8.11.0",
     "markdown>=3.4.1",
 ]
-requires-python = ">=3.10"
+requires-python = ">=3.9"
 readme = "README.md"
 license = {text = "MIT"}
 
