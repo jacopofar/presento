@@ -9,7 +9,7 @@ dev = [
 
 [project]
 name = "presento"
-version = "0.2.0"
+version = "0.3.0"
 description = "A tool to programmatically build slides using Reveal.js"
 authors = [
     {name = "Jacopo Farina", email = "jacopo1.farina@gmail.com"},
