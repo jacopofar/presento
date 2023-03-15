@@ -46,6 +46,7 @@ class Presentation:
         columns_html: list[str],
         grid_gap: str = "1%",
         column_sizes: Optional[str] = None,
+        title: str = "",
     ) -> None:
         if column_sizes is None:
             column_sizes = " ".join(
@@ -55,6 +56,7 @@ class Presentation:
 
         grid_snippet = dedent(
             f"""
+            <h2 class="r-fit-text">{title}</h2>
         <div style="display: grid; grid-template-columns: {column_sizes}; grid-gap: {grid_gap};">
         """
         )
