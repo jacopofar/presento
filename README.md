@@ -20,7 +20,13 @@ from markdown import markdown
 
 import presento
 
-p = presento.Presentation(theme='serif')
+p = presento.Presentation(
+    theme="dracula",
+    extra_style="""
+    .reveal h2{
+        color: #afee34;
+    }""",
+)
 p.add_md_slide(
     """
 # title of the slide
@@ -32,7 +38,8 @@ It uses markdown so it can have:
 2. [links](https://en.wikipedia.org/wiki/Markdown)
 3. lists
 
-"""
+""",
+extra_style="text-align: left;",
 )
 # for the next slide we use plotly, but we need a CDN
 p.add_cdn_js("https://cdn.plot.ly/plotly-latest.min.js")

@@ -10,8 +10,6 @@ from time import sleep
 from typing import Optional, Union
 from webbrowser import open as browser_open
 
-from markdown import markdown
-
 import presento
 
 REVEAL_ZIP_FILE = "reveal.js-master.zip"
@@ -21,19 +19,23 @@ class Presentation:
     def __init__(
         self,
         theme: str = "black",
+        extra_style: str = "",
     ) -> None:
         self.slides: list[str] = []
         self.cdn_js: list[str] = []
         self.theme = theme
+        self.extra_style = extra_style
 
-    def add_md_slide(self, content: str) -> None:
-        self.slides.append(markdown(dedent(content)))
+    def add_md_slide(self, content: str, extra_style: str = "") -> None:
+        self.slides.append(
+            f'<section data-markdown style="{extra_style}"><textarea data-template>{dedent(content)}</textarea></section>'
+        )
 
     def add_html_slide(self, content: str) -> None:
-        self.slides.append(content)
+        self.slides.append(f"<section>{content}</section>")
 
     def slides_html(self) -> str:
-        return "\n".join(f"<section>{s}</section>" for s in self.slides)
+        return "\n".join(self.slides)
 
     def cdn_imports_html(self) -> str:
         return "\n".join(f'<script src="{s}"></script>' for s in self.cdn_js)
@@ -56,12 +58,12 @@ class Presentation:
 
         grid_snippet = dedent(
             f"""
-            <h2 class="r-fit-text">{title}</h2>
+            <section><h2 class="r-fit-text">{title}</h2>
         <div style="display: grid; grid-template-columns: {column_sizes}; grid-gap: {grid_gap};">
         """
         )
         grid_snippet += "\n".join(f"<div>{ch}</div>" for ch in columns_html)
-        grid_snippet += "</div>"
+        grid_snippet += "</div></section>"
         self.slides.append(grid_snippet)
 
     def save_folder(self, folder: Union[Path, str]) -> None:
@@ -85,6 +87,9 @@ class Presentation:
             )
             slides_file = slides_file.replace(
                 "dist/theme/black.css", f"dist/theme/{self.theme}.css"
+            )
+            slides_file = slides_file.replace(
+                "</head>", f"""<style>{self.extra_style}</style></head>"""
             )
             frw.seek(0)
             frw.write(slides_file)
